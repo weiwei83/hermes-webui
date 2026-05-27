@@ -1332,6 +1332,7 @@
   .img-lightbox-close:hover{background:rgba(255,255,255,.22);}
   .img-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,opacity .15s;z-index:1;opacity:.6;}
   .img-lightbox-nav:hover{background:rgba(255,255,255,.28);opacity:1;}
+  .img-lightbox-nav:disabled{opacity:.2;cursor:default;background:rgba(255,255,255,.08);}
   .img-lightbox-nav-prev{left:16px;}
   .img-lightbox-nav-next{right:16px;}
   .img-lightbox-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.5);color:#fff;font-size:14px;padding:4px 14px;border-radius:12px;pointer-events:none;}

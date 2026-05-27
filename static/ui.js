@@ -580,12 +580,14 @@ function _openImgLightboxWithNav(src, alt, images, index) {
     prevBtn.setAttribute('aria-label', 'Previous image');
     prevBtn.innerHTML = '‹';
     prevBtn.onclick = e => { e.stopPropagation(); _navigateLightbox(lb, -1); };
+    if(index===0) prevBtn.disabled = true;
     lb.appendChild(prevBtn);
     const nextBtn = document.createElement('button');
     nextBtn.className = 'img-lightbox-nav img-lightbox-nav-next';
     nextBtn.setAttribute('aria-label', 'Next image');
     nextBtn.innerHTML = '›';
     nextBtn.onclick = e => { e.stopPropagation(); _navigateLightbox(lb, 1); };
+    if(index===images.length-1) nextBtn.disabled = true;
     lb.appendChild(nextBtn);
     lb._counterEl = document.createElement('div');
     lb._counterEl.className = 'img-lightbox-counter';
@@ -618,6 +620,11 @@ function _navigateLightbox(lb, direction) {
   lb.setAttribute('aria-label', nextImg.alt || 'Image');
   // Update counter via stored reference — no DOM query.
   if(lb._counterEl) lb._counterEl.textContent = (newIndex+1) + ' / ' + images.length;
+  // Disable prev/next at boundaries
+  const prevBtn = lb.querySelector('.img-lightbox-nav-prev');
+  const nextBtn = lb.querySelector('.img-lightbox-nav-next');
+  if(prevBtn) prevBtn.disabled = (newIndex === 0);
+  if(nextBtn) nextBtn.disabled = (newIndex === images.length - 1);
 }
 function _closeImgLightbox(lb) {
   if(!lb || !lb.parentNode) return;
